@@ -17,8 +17,8 @@ namespace SSLCommerz.Web.Controllers
 
         public IActionResult Checkout()
         {
-            var productName = "HP Pavilion Series Laptop";
-            var price = 85000;
+            var productName = "Apple M2";
+            var price = 185000;
 
             var baseUrl = Request.Scheme + "://" + Request.Host;
 
@@ -60,8 +60,8 @@ namespace SSLCommerz.Web.Controllers
             PostData.Add("product_category", "Demo");
 
             //we can get from email notificaton
-            var storeId = "rejgsggsgsgsgsgeabc28c1c8";
-            var storePassword = "rfgsgejagsggsgsgsgsg8c1c8@ssl";
+            var storeId = "ibosl65a7aa6999acc";
+            var storePassword = "ibosl65a7aa6999acc@ssl";
             var isSandboxMood = true;
 
             SSLCommerzGatewayProcessor sslcz = new SSLCommerzGatewayProcessor(storeId, storePassword, isSandboxMood);
@@ -81,15 +81,17 @@ namespace SSLCommerz.Web.Controllers
 
             string TrxID = Request.Form["tran_id"];
             // AMOUNT and Currency FROM DB FOR THIS TRANSACTION
-            string amount = "85000";
+            string amount = "185000";
             string currency = "BDT";
 
-            var storeId = "rejgsggsgsgsgsgeabc28c1c8";
-            var storePassword = "rfgsgejagsggsgsgsgsg8c1c8@ssl";
+            var storeId = "ibosl65a7aa6999acc";
+            var storePassword = "ibosl65a7aa6999acc@ssl";
 
             SSLCommerzGatewayProcessor sslcz = new SSLCommerzGatewayProcessor(storeId, storePassword, true);
             var resonse = sslcz.OrderValidate(TrxID, amount, currency, Request);
-            var successInfo = $"Validation Response: {resonse}";
+            //var successInfo = $"Validation Response: {resonse}";
+
+            var successInfo = resonse == true ? $"Your payment has been completed successfully." : "There some error while processing your payment. Please try again.";
             ViewBag.SuccessInfo = successInfo;
 
             return View();

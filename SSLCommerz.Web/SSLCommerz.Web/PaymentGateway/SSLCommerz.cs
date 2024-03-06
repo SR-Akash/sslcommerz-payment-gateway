@@ -11,11 +11,6 @@ using System.Threading.Tasks;
 
 namespace SSLCommerz.Web.PaymentGateway
 {
-    /// <summary>
-    /// SSLCommerz SDK
-    /// Author: SSLWIRELESS LTD.
-    /// Developed By: Md. Shahnawaz Ahmed
-    /// </summary>
     public class SSLCommerzGatewayProcessor
     {
         protected List<String> key_list;
